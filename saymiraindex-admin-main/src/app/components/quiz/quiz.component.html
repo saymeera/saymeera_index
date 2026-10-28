@@ -1,0 +1,247 @@
+<div class="quiz-page">
+
+  <!-- HEADER CARD -->
+  <div class="card header-card">
+    <div class="header-row">
+      <h3>Manage Quiz Buckets</h3>
+      <button class="btn" (click)="openModal()">+ Create New Quiz</button>
+    </div>
+  </div>
+
+  <!-- QUIZ GRID -->
+  <div class="quiz-grid">
+
+    <!-- QUESTION BUILDER -->
+    <div class="card" [formGroup]="addQuistionForm">
+      <h3>Question Builder</h3><br>
+
+      <div class="form-group">
+        <label>Select Quiz Bucket</label>
+        <select formControlName="quizId">
+          <option value="">Select Quiz</option>
+          <option *ngFor="let quiz of quizlist" [value]="quiz._id">{{quiz.quizNo}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Question Text</label>
+        <textarea rows="2" placeholder="Ex: What is 2 + 2?" formControlName="questionText"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Type</label>
+        <select (change)="onTypeChange()" formControlName="optionType">
+          <option value="">Select Objective Type</option>
+          <option value="mcq">Multiple Choice</option>
+          <option value="tf">True / False</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Options (Give Objectives)</label>
+        <div formArrayName="options">
+          <div class="option-row" *ngFor="let opt of options.controls; let i = index">
+            <input type="radio" />
+            <input type="text" class="opt-in" [formControlName]="i"
+              [readonly]="addQuistionForm.value.optionType === 'tf'" placeholder="Option {{ i + 1 }}" />
+          </div>
+        </div>
+      </div>
+
+      <button class="btn full-width" *ngIf="!isQuestionEditMode" (click)="saveQuestion()">Save Question</button>
+      <button class="btn full-width" *ngIf="isQuestionEditMode" (click)="updateQuestion()">Update Question</button>
+    </div>
+
+    <!-- LIVE PREVIEW -->
+    <!-- <div class="card">
+      <h3>Quiz Listing</h3><br>
+
+      <div class="live-preview">
+        <strong class="quiz-name">Quiz Name</strong>
+        <p class="question-text">Question will show here...</p>
+        <div class="options-preview">
+          <div>? Option A</div>
+          <div>? Option B</div>
+        </div>
+      </div>
+
+    </div> -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>Quiz Listing</h3>
+
+        <button class="btn-sm btn-edit">
+          Quiz Status
+        </button>
+      </div>
+      <br>
+
+      <table class="quiz-table">
+        <thead>
+          <tr>
+            <th>Quiz No.</th>
+            <th style="width: 160px;">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let quiz of quizlist">
+            <td style="cursor: pointer;" (click)="selectQuiz(quiz._id)">{{ quiz.quizNo }}</td>
+
+            <td class="action-col">
+              <button class="btn-sm btn-edit" (click)="editQuiz(quiz)">
+                Edit
+              </button>&nbsp;
+
+              <button class="btn-sm btn-delete" (click)="deleteQuiz(quiz._id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+
+          <!-- Empty state -->
+          <tr *ngIf="!quizlist || quizlist.length === 0">
+            <td colspan="2" class="text-center">
+              No quizzes found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Quiz Deatil -->
+  <div class="card">
+    <h3>Quiz Detail</h3>
+
+    <table class="question-table">
+      <thead>
+        <tr>
+          <th>Quiz No.</th>
+          <th>Total Que.</th>
+          <th>Que Per User</th>
+          <th>Quiz Expiry</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let quiz of quizlist">
+          <td>{{ quiz.quizNo }}</td>
+          <td>{{ quiz.totalQuestions }}</td>
+          <td>{{ quiz.questionsPerUser }}</td>
+          <td>{{quiz.expiryValue}}{{quiz.expiryUnit}}</td>
+          <td>{{ quiz.status }}</td>
+
+          <!-- ACTION -->
+          <td class="action-col">
+            <button *ngIf="quiz.status != 'PUBLISHED'"
+              [ngClass]="quiz.status === 'COMPLETED' ? 'btn-sm' : 'btn-success'" [disabled]="quiz.status === 'DRAFT'"
+              (click)="publishQuiz(quiz)">Publish</button>
+            <span *ngIf="quiz.status === 'PUBLISHED'">⏳ {{ quiz.remainingTime }} </span>
+          </td>
+        </tr>
+
+        <tr *ngIf="!quizlist || quizlist.length === 0">
+          <td colspan="5" class="text-center">
+            No quizlist found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- QUESTION LIST -->
+  <div class="card">
+    <h3>Question Listing | {{quizName}}</h3>
+
+    <table class="question-table">
+      <thead>
+        <tr>
+          <th>Que No.</th>
+          <th>Que</th>
+          <th>Options</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let que of quistionList">
+          <td>{{ que.questionNo }}</td>
+
+          <td>{{ que.questionText }}</td>
+
+          <!-- OPTIONS -->
+          <td>
+            <div class="option-list">
+              <span *ngFor="let opt of que.options; let i = index" class="option-item">
+                {{ 'ABCD'[i] }}. {{ opt }}
+              </span>
+            </div>
+          </td>
+
+          <!-- ACTION -->
+          <td class="action-col">
+            <i class="fa fa-edit edit-icon" title="Edit" (click)="editQuestion(que)"></i>&nbsp;
+
+            <!-- <i class="fa fa-trash delete-icon" title="Delete" (click)="deleteQuestion(que._id)"></i> -->
+          </td>
+        </tr>
+
+        <tr *ngIf="!quistionList || quistionList.length === 0">
+          <td colspan="5" class="text-center">
+            No questions found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="modal" *ngIf="isQuizModalOpen">
+    <div class="modal-body">
+      <form [formGroup]="quizForm">
+        <h3 *ngIf="!isEditMode">Create Quiz Bucket</h3><br>
+        <h3 *ngIf="isEditMode">Update Quiz Bucket</h3><br>
+
+        <!-- <div class="form-group">
+        <label>Quiz Name</label>
+        <input type="text" style="width: 90%;" formControlName="title">
+      </div> -->
+        <div class="form-group">
+          <label>Quiz NO.</label>
+          <input type="number" style="width: 90%;" formControlName="quizNo">
+        </div>
+
+        <div class="form-group">
+          <label>Total Questions in Bank</label>
+          <input type="number" style="width: 90%;" formControlName="totalQuestions">
+        </div>
+
+        <div class="form-group">
+          <label>Questions Per User</label>
+          <input type="number" style="width: 90%;" formControlName="questionsPerUser">
+        </div>
+
+        <div class="form-group">
+          <label>Quiz Expiry After</label>
+
+          <div style="display:flex; gap:10px">
+            <input type="number" min="1" placeholder="Duration" formControlName="expiryValue" />
+
+            <select formControlName="expiryUnit">
+              <option value="hours">Hours</option>
+              <option value="days">Days</option>
+            </select>
+          </div>
+        </div>
+
+
+        <button class="btn mr-5" *ngIf="!isEditMode" (click)="createQuizBucket()">Save Quiz</button>
+        <button class="btn mr-5" *ngIf="isEditMode" (click)="updateQuiz()">Update Quiz</button>&nbsp;
+        <button class="btn btn-outline ml-5" (click)="closeModal()">Cancel</button>
+        </form>
+    </div>
+  </div>

@@ -1,0 +1,236 @@
+<!-- <div class="register-wrapper">
+  <div class="web-container">
+    <div class="logo">
+      <img src="../../../../../assets/img/logo_1.png" alt="Say Mira Index">
+    </div>
+
+    <div class="subtitle">
+      It will hardly take 2 minutes...
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <div class="radio-group">
+        <label>
+          <input type="radio" value="individual" formControlName="subtype">
+          Individual
+        </label>
+
+        <label>
+          <input type="radio" value="corporate" formControlName="subtype">
+          Corporate
+        </label>
+      </div>
+
+      <input class="form-control" formControlName="fullName" *ngIf="registerForm.get('subtype')?.value=='individual'"
+        [class.is-invalid]="submitted && registerForm.get('fullName')?.invalid" placeholder="Full Name">
+
+      <input class="form-control" formControlName="corporateName" *ngIf="registerForm.get('subtype')?.value == 'corporate'"
+        [class.is-invalid]="submitted && registerForm.get('corporateName')?.invalid" placeholder="Corporate Name">
+
+      <div class="section-title">
+        Choose Corporate Type & its Regd. Official Location
+      </div>
+
+      <div class="grid-2">
+        <select class="form-select" formControlName="type" *ngIf="registerForm.get('subtype')?.value == 'corporate'"
+          [class.is-invalid]="submitted && registerForm.get('type')?.invalid">
+          <option value="">Type</option>
+          <option value="pvt">Private Ltd</option>
+          <option value="llp">LLP</option>
+        </select>
+
+        <select class="form-select" formControlName="gender" *ngIf="registerForm.get('subtype')?.value == 'individual'"
+        [class.is-invalid]="submitted && registerForm.get('gender')?.invalid">
+        <option value="">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="trans">Trans</option>
+        </select>
+
+        <select class="form-select" formControlName="country"
+          [class.is-invalid]="submitted && registerForm.get('country')?.invalid">
+          <option value="">Country</option>
+          <option value="india">India</option>
+        </select>
+
+        <select class="form-select" formControlName="state"
+          [class.is-invalid]="submitted && registerForm.get('state')?.invalid">
+          <option value="">State</option>
+          <option value="mh">Maharashtra</option>
+        </select>
+
+        <select class="form-select" formControlName="district"
+          [class.is-invalid]="submitted && registerForm.get('district')?.invalid">
+          <option value="">District</option>
+          <option value="mum">Mumbai</option>
+        </select>
+      </div>
+
+
+      <div class="grid-2">
+        <input class="form-control" formControlName="mobile" placeholder="Mobile No." maxlength="10"
+          [class.is-invalid]="submitted && registerForm.get('mobile')?.invalid" />
+
+        <button type="button" class="Otpbtn" [disabled]="registerForm.get('mobile')?.invalid || isMobileVerified"
+          (click)="getMobOtp()">
+          {{ isMobileVerified ? 'Verified' : 'Get OTP' }}
+        </button>
+      </div>
+
+      <div class="otp-row" *ngIf="isMobileOtpSent" [formGroup]="otpForm">
+        <input class="form-control" placeholder="OTP" formControlName="mobileOtp">
+        <button type="button" class="verifyOtpbtn" (click)="verifyMobOtp()">Verify OTP</button>
+      </div>
+
+      <div class="grid-2">
+        <input class="form-control" formControlName="email"
+          [class.is-invalid]="submitted && registerForm.get('email')?.invalid" placeholder="Email">
+        <button type="button" class="Otpbtn" [disabled]="registerForm.get('email')?.invalid || isEmailVerified" (click)="getMailOtp()">
+          {{ isEmailVerified ? 'Verified' : 'Get OTP' }}
+        </button>
+      </div>
+      <div class="otp-row" *ngIf="isEmailOtpSent" [formGroup]="otpForm">
+        <input class="form-control" placeholder="OTP" formControlName="emailOtp">
+        <button type="button" class="verifyOtpbtn" (click)="verifyMailOtp()">Verify OTP</button>
+      </div>
+
+      <input class="form-control" formControlName="discountCode" placeholder="Discount Code (If Any)">
+      <button class="btn-register" routerLink="/login">
+        Back
+      </button>
+      <button type="submit" class="btn-register">
+        Register
+      </button>
+    </form>
+  </div>
+</div> -->
+
+
+<div class="container hero-graphics">
+  <div class="row align-items-center">
+    <div class="col-lg-6 pe-lg-5">
+      <div class="market-badge">
+        <i class="fas fa-chart-line me-2"></i> Join 1.6M+ Active Traders
+      </div>
+      <h1 class="main-title">Invest in everything with <span style="color:var(--brand-red)">Zero Brokerage</span></h1>
+      <p class="text-muted mb-5 fs-5">Open your free Demat and Trading account in just 2 minutes and start your
+        investment journey with Say Mira Index.</p>
+
+      <div class="floating-element d-none d-lg-block">
+        <img src="https://img.freepik.com/free-vector/gradient-stock-market-concept_23-2149166910.jpg"
+          class="img-fluid stock-graphic" alt="Trading Graphic">
+      </div>
+    </div>
+
+    <div class="col-lg-5 offset-lg-1">
+      <div class="form-panel">
+        <h4 class="fw-bold mb-1">Signup Now</h4>
+        <p class="text-muted small mb-4">Or track your existing application</p>
+
+        <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+          <div class="radio-nav">
+            <input type="radio" value="individual" formControlName="subtype" name="subtype" id="ind">
+            <label for="ind">Individual</label>
+            <input type="radio" value="corporate" formControlName="subtype" name="subtype" id="corp">
+            <label for="corp">Corporate</label>
+          </div>
+          <input class="form-control" placeholder="Full Name" formControlName="fullName"
+            *ngIf="registerForm.get('subtype')?.value=='individual'"
+            [class.is-invalid]="submitted && registerForm.get('fullName')?.invalid" placeholder="Full Name">
+          <input class="form-control" placeholder="Corporate Name" formControlName="corporateName"
+            *ngIf="registerForm.get('subtype')?.value == 'corporate'"
+            [class.is-invalid]="submitted && registerForm.get('corporateName')?.invalid" placeholder="Corporate Name">
+
+          <div class="row g-2">
+            <div class="col-6" *ngIf="registerForm.get('subtype')?.value == 'corporate'">
+              <select class="form-select" formControlName="type"
+                [class.is-invalid]="submitted && registerForm.get('type')?.invalid">
+                <option value="">Type</option>
+                <option value="pvt">Private Ltd</option>
+                <option value="llp">LLP</option>
+              </select>
+            </div>
+            <div class="col-6" *ngIf="registerForm.get('subtype')?.value == 'individual'">
+              <select class="form-select" formControlName="gender"
+                [class.is-invalid]="submitted && registerForm.get('gender')?.invalid">
+                <option value="">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="trans">Trans</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" formControlName="country"
+                [class.is-invalid]="submitted && registerForm.get('country')?.invalid">
+                <option value="">Country</option>
+                <option value="india">India</option>
+              </select>
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col-6">
+              <select class="form-select" formControlName="state"
+                [class.is-invalid]="submitted && registerForm.get('state')?.invalid">
+                <option value="">State</option>
+                <option value="mh">Maharashtra</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" formControlName="district"
+                [class.is-invalid]="submitted && registerForm.get('district')?.invalid">
+                <option value="">District</option>
+                <option value="mum">Mumbai</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="otp-group mt-2">
+            <input class="form-control" placeholder="Mobile Number" formControlName="mobile" placeholder="Mobile No."
+              maxlength="10" [class.is-invalid]="submitted && registerForm.get('mobile')?.invalid">
+            <!-- <span class="get-otp-link" (click)="getMobOtp()">{{ isMobileVerified ? 'Verified' : 'Get OTP' }}</span> -->
+            <button type="button" style="margin-right: 18px;" class="get-otp-link" (click)="getMobOtp()"
+              [disabled]="registerForm.get('mobile')?.invalid || isMobileVerified">
+              {{ isMobileVerified ? 'Verified' : 'Get OTP' }}
+            </button>
+
+          </div>
+          <div class="otp-group mt-2" *ngIf="isMobileOtpSent" [formGroup]="otpForm">
+            <input class="form-control" placeholder="Enter Mobile OTP" formControlName="mobileOtp">
+            <span class="get-otp-link" (click)="verifyMobOtp()">VERIFY OTP</span>
+          </div>
+
+
+          <div class="otp-group">
+            <input class="form-control" placeholder="Email ID" formControlName="email"
+              [class.is-invalid]="submitted && registerForm.get('email')?.invalid" placeholder="Email">
+            <!-- <span class="get-otp-link" (click)="getMailOtp()">{{ isEmailVerified ? 'Verified' : 'Get OTP' }}</span> -->
+             <button type="button" class="get-otp-link" style="margin-right: 18px;" (click)="getMailOtp()"
+              [disabled]="registerForm.get('email')?.invalid || isEmailVerified">
+              {{ isEmailVerified ? 'Verified' : 'Get OTP' }}
+            </button>
+          </div>
+
+          <div class="otp-group" *ngIf="isEmailOtpSent" [formGroup]="otpForm">
+            <input class="form-control" placeholder="Enter Email OTP" formControlName="emailOtp">
+            <span class="get-otp-link" (click)="verifyMailOtp()">VERIFY OTP</span>
+          </div>
+
+          <input class="form-control" formControlName="discountCode" placeholder="Discount Code (If Any)">
+
+
+          <button type="submit" class="btn-register">
+            Open Account Now <i class="fas fa-arrow-right ms-2"></i>
+          </button>
+
+          <div class="mt-3 text-center">
+            <p class="text-muted" style="font-size: 11px;">
+              By proceeding, you agree to our <a href="#" class="text-danger">Terms</a> & <a href="#"
+                class="text-danger">Privacy Policy</a>
+            </p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

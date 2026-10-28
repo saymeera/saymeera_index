@@ -1,0 +1,105 @@
+<div class="quiz-page">
+
+  <!-- HEADER CARD -->
+  <div class="card header-card">
+    <div class="header-row">
+      <h3>SubAdmin List & Permissions</h3>
+      <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" #openAdminModel>+ Add Sub Admin</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Sub Admin Users</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of adminUserList">
+          <td>{{user.fullName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td>{{user.isActive}}</td>
+          <td><i class="fa fa-edit edit-icon" title="Edit" (click)="edit(user)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Sub Admin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closeBtn></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="subAdminForm">
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <label for="recipient-name" class="col-form-label">Full Name:</label>
+              <input type="text" class="form-control" formControlName="fullName" placeholder="Enter full name">
+            </div>
+            <div class="col-md-6">
+              <label for="message-text" class="col-form-label">Email:</label>
+              <input class="form-control" formControlName="email" placeholder="Enter email">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <label>Password</label>
+              <input type="password" class="form-control" formControlName="password" placeholder="Enter password" />
+            </div>
+            <div class="col-md-6">
+              <label>Role</label>
+              <select class="form-control" formControlName="role">
+                <option value="">Select role</option>
+                <option value="SUB_ADMIN">Sub Admin</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <label >Mobile No.</label>
+              <input type="number" class="form-control" formControlName="mobile" placeholder="Enter Mob no" />
+            </div>
+            <div class="col-md-6">
+              <label>Status</label>
+              <select class="form-control" formControlName="isActive">
+                <option [value]="true">Active</option>
+                <option [value]="false">Inactive</option>
+              </select>
+            </div>
+          </div>
+            <div>
+              <label class="mb-2 d-block">Permissions</label>
+              <div class="form-check" *ngFor="let per of permissionArr">
+                <input class="form-check-input" type="checkbox" [value]="per.router"
+                  (change)="onPermissionChange($event)" id="{{ per.router }}" />
+                <label class="form-check-label" for="{{ per.router }}">
+                  {{ per.module }}
+                </label>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="createAdmin()">Create Admin</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<!-- <p>navbar works!</p> -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container-fluid px-lg-5">
+
+    <!-- LOGO -->
+    <a class="logo-group" href="#">
+      <img src="../../../../assets/img/logo_1.png" width="170" height="51" alt="Say Mira Index">
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- NAV CONTENT -->
+    <div class="collapse navbar-collapse" id="navMain">
+
+      <!-- SEARCH -->
+      <div class="mx-auto my-3 my-lg-0 w-100" style="max-width: 450px;">
+        <div class="search-wrapper">
+          <i class="fas fa-search text-muted"></i>
+          <input type="text" class="search-input" placeholder="Search Say Mira Index...">
+        </div>
+      </div>
+
+      <!-- LINKS + ICONS -->
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+
+        <!-- NAV LINKS -->
+        <div class="d-flex flex-column flex-lg-row mb-3 mb-lg-0 align-items-lg-center">
+          <a href="#" class="nav-link nav-link-custom v-line">Awards</a>
+          <a href="#" class="nav-link nav-link-custom v-line">Category</a>
+          <a href="#" class="nav-link nav-link-custom v-line">Tag</a>
+          <a href="#" class="nav-link nav-link-custom v-line">Technology</a>
+          <a href="#" class="nav-link nav-link-custom me-lg-3">Country</a>
+        </div>
+
+        <!-- ICONS -->
+        <div class="d-flex align-items-center gap-4 ps-lg-3">
+          <!-- <i class="fas fa-th-large text-warning icon-btn" title="Menu"></i>
+          <i class="fas fa-phone-alt text-success icon-btn"></i>
+          <i class="fab fa-whatsapp text-success fs-4 icon-btn"></i> -->
+
+          <div class="position-relative" *ngIf="isUserLogin">
+            <i class="fas fa-bell text-danger icon-btn"></i>
+            <span class="notification-dot"></span>
+          </div>
+
+          <div *ngIf="!isUserLogin">
+            <button class="btn btn-sm btn-primary" routerLink="/index/app/login">SignIn</button>
+          </div>
+          <!-- PROFILE -->
+          <div class="dropdown" *ngIf="isUserLogin">
+            <div class="dropdown-toggle no-caret" data-bs-toggle="dropdown" style="cursor: pointer;">
+              <img src="https://i.pravatar.cc/150?img=12" class="profile-circle shadow-sm" alt="User">
+            </div>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 p-2">
+              <li>
+                <a class="dropdown-item rounded" href="#">
+                  <i class="fas fa-user-circle me-2"></i> My Profile
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item rounded" href="#">
+                  <i class="fas fa-cog me-2"></i> Settings
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item rounded text-danger" style="cursor: pointer;" (click)="logOutUser()">
+                  <i class="fas fa-sign-out-alt me-2"></i> LogOut
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="announcement-slider">
+  <div class="slider-content">
+    <span>Explore thousands of high-quality premium content exclusively on Say Mira Index &nbsp; � &nbsp;
+    </span>
+    <span>Explore thousands of high-quality premium content exclusively on Say Mira Index &nbsp; � &nbsp;
+    </span>
+    <span>Explore thousands of high-quality premium content exclusively on Say Mira Index &nbsp; � &nbsp;
+    </span>
+    <span>Explore thousands of high-quality premium content exclusively on Say Mira Index &nbsp; � &nbsp;
+    </span>
+  </div>
+</div>

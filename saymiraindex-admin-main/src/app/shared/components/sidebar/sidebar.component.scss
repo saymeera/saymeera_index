@@ -1,0 +1,52 @@
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-box {
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+
+  h2 {
+    color: #be1b1e;
+    letter-spacing: 2px;
+  }
+}
+
+.nav-menu {
+  flex: 1;
+  padding: 20px 10px;
+}
+
+.nav-item {
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #adb5bd;
+  transition: 0.3s;
+
+  &:hover {
+    background: rgba(190, 27, 30, 0.1);
+    color: #fff;
+  }
+
+  &.active {
+    background: #be1b1e;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.version {
+  padding: 20px;
+  border-top: 1px solid #333;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+}

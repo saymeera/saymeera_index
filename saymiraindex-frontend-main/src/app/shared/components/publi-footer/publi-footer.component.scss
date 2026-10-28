@@ -1,0 +1,42 @@
+footer {
+  background: #fbfbfb;
+  border-top: 1px solid #eee;
+  padding: 80px 0 30px;
+  font-size: 14px;
+  color: #666;
+}
+
+footer h6 {
+  font-weight: 600;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 12px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #666;
+  transition: 0.3s;
+}
+
+footer ul li a:hover {
+  color: #b11212;
+  padding-left: 5px;
+}
+
+.social-link {
+  font-size: 20px;
+  color: #888;
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.social-link:hover {
+  color: #b11212;
+}

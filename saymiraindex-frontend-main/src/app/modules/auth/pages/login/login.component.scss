@@ -1,0 +1,86 @@
+.hero-section {
+  padding: 100px 0;
+  background: radial-gradient(circle at top right, #fff5f5, #fff);
+}
+
+.hero-title {
+  font-size: 52px;
+  font-weight: 700;
+  color: #1f1f1f;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: #666;
+  margin: 25px 0 40px;
+}
+
+.signup-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  border: 1px solid #f1f1f1;
+}
+
+.input-group-text {
+  background: #fdfdfd;
+  border-right: none;
+  border-color: #e0e0e0;
+}
+
+.form-control {
+  border-left: none;
+  padding: 14px;
+  border-color: #e0e0e0;
+  font-size: 15px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #b11212;
+}
+
+.btn-get-otp {
+  background: #b11212;
+  border: none;
+  padding: 14px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-get-otp:hover {
+  background: #8e0e0e;
+  transform: translateY(-2px);
+}
+
+.hero-img-wrapper {
+  position: relative;
+}
+
+.hero-main-img {
+  border-radius: 15px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  width: 100%;
+  transition: 0.5s;
+}
+
+.hero-main-img:hover {
+  transform: scale(1.02);
+}
+
+.floating-card {
+  position: absolute;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

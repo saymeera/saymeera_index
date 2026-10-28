@@ -1,0 +1,31 @@
+<div class="sidebar">
+  <div class="logo-box">
+    <h2>QUIZ HUB</h2>
+  </div>
+
+  <div class="nav-menu">
+    <div *ngIf="has('dashboard')" class="nav-item" [class.active]="active === 'dashboard'" (click)="select('dashboard')"
+      routerLink="/admin/dashboard">
+      Dashboard
+    </div>
+
+    <div *ngIf="has('quiz')" class="nav-item" [class.active]="active === 'quiz'" (click)="select('quiz')" routerLink="/admin/quiz">
+      Add Quiz & Questions
+    </div>
+
+    <div *ngIf="has('user-performance')" class="nav-item" [class.active]="active === 'performance'" (click)="select('performance')"
+      routerLink="/admin/user-performance">
+      User Performance
+    </div>
+
+    <div *ngIf="has('tips')" class="nav-item" [class.active]="active === 'tips'" (click)="select('tips')" routerLink="/admin/tips">
+      Add Tips
+    </div>
+
+    <div *ngIf="has('sub-admin')" class="nav-item" [class.active]="active === 'sub-admin'" (click)="select('sub-admin')" routerLink="/admin/sub-admin">
+      sub Admin
+    </div>
+  </div>
+
+  <div class="version">v1.0.2 Build 2026</div>
+</div>

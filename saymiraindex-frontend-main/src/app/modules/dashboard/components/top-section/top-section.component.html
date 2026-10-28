@@ -1,0 +1,53 @@
+<div class="row g-0 mid-section">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="col-lg-1 sidebar-l text-white bg-dark d-flex flex-column text-center">
+
+    <div class="time-box">
+      <div class="time" id="liveTime">15:14:57</div>
+      <small>Market Time (IST)</small>
+    </div>
+
+    <div class="trend-box">
+      <small>Nifty Trend</small>
+      <div class="text-success fw-bold">BULLISH <i class="fas fa-level-up-alt"></i></div>
+    </div>
+
+    <div class="indices-scroll">
+      <div class="index-box">DOW <span class="text-success">+0.5%</span></div>
+      <div class="index-box">FTSE <span class="text-danger">-0.2%</span></div>
+      <div class="index-box">HANGSENG <span class="text-success">+1.4%</span></div>
+      <div class="index-box">NIFTY <span class="text-success">+0.7%</span></div>
+    </div>
+
+    <div class="bottom-icons">
+      <i class="fas fa-chart-bar"></i>
+      <i class="fas fa-calculator"></i>
+      <i class="fas fa-cog"></i>
+    </div>
+  </div>
+
+  <!-- CENTER VIDEO -->
+  <div class="col-lg-8 video-box p-0">
+    <iframe
+      src="https://www.youtube.com/embed/22bLNq6iCjU"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="col-lg-3 sidebar-r bg-white p-3">
+    <h6 class="section-title">Watchlist <span class="badge bg-danger">LIVE</span></h6>
+
+    <div class="stock" *ngFor="let s of [1,2,3]">
+      <div>
+        <b>RELIANCE</b>
+        <small>NSE</small>
+      </div>
+      <div class="text-end">
+        <b>₹2950</b>
+        <span class="text-success">+2.4%</span>
+      </div>
+    </div>
+  </div>
+</div>

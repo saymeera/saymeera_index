@@ -1,0 +1,58 @@
+.tips-strip-container {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: #fff;
+    overflow: hidden;
+    border-top: var(--border-width) solid var(--brand-red);
+    border-bottom: var(--border-width) solid var(--brand-red);
+}
+
+/* Left label */
+.tips-label {
+    background-color: #B20000;
+    color: #fff;
+    padding: 0 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    z-index: 2;
+}
+
+/* Slider container */
+.tips-slider-box {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Moving text */
+.tips-moving-text {
+    display: inline-block;
+    padding-left: 20px;
+    animation: tips-scroll 30s linear infinite;
+}
+
+.tips-moving-text span {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Pause on hover */
+.tips-strip-container:hover .tips-moving-text {
+    animation-play-state: paused;
+}
+
+/* Animation */
+@keyframes tips-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

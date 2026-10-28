@@ -1,0 +1,14 @@
+<div class="layout">
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <div class="content">
+    <div class="header">
+      <h2 id="page-title">Dashboard</h2>
+      <div class="user-info">
+        <span>Hello, <strong>System Admin</strong></span>
+        <button class="logout-btn" (click)="handleLogout()">Logout</button>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

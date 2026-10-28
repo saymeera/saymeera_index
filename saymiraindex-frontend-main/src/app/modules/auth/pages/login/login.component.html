@@ -1,0 +1,64 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 text-start">
+        <h1 class="hero-title">
+          Invest in everything. <br>
+          <span style="color: #b11212;">Zero brokerage.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Join 1.5+ Crore smart investors on India's most advanced trading platform.
+        </p>
+
+        <div class="signup-card">
+          <h4 class="fw-bold mb-4">Start Investing</h4>
+
+          <form [formGroup]="loginform" style="border: 2pxsolid red;" class="input-group signup-input-group">
+            <span class="input-group-text">
+              <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" width="18" alt="IN">
+              <span class="ms-2">|</span>
+              <i class="fas fa-envelope ms-2 text-muted"></i>
+            </span>
+            
+            <input *ngIf="!enableOtp" type="text" class="form-control signup-input" placeholder="Enter mobile number or email" formControlName="numberOrMail">
+            <input *ngIf="enableOtp" type="text" class="form-control signup-input" placeholder="Enter OTP" formControlName="otp" />
+          </form>
+
+          <button *ngIf="enableLogin" class="btn btn-primary btn-get-otp w-100 mt-2" (click)="sendOtp()">
+            Get Started (OTP)
+          </button>
+          <button *ngIf="!enableLogin" class="btn btn-primary btn-get-otp w-100 mt-2" (click)="login()">
+            Login
+          </button>
+
+          <p class="text-muted mt-3 mb-0" style="font-size: 12px; text-align: center;">
+            By clicking, you agree to the
+            <a href="#" class="text-danger text-decoration-none">Terms & Conditions</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="hero-img-wrapper ps-lg-5">
+          <img src="../../../../../assets/img/loginImg.jpg" class="hero-main-img" alt="Say Mira Terminal">
+
+          <div class="floating-card d-none d-md-block" style="top: -20px; right: 0;">
+            <span class="text-up fw-bold">
+              <i class="fas fa-caret-up"></i> Profit +₹4,500
+            </span>
+          </div>
+
+          <div class="floating-card d-none d-md-block" style="bottom: 30px; left: 0;">
+            <span class="text-dark fw-bold">
+              <i class="fas fa-shield-alt text-success"></i> Highly Secure
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+

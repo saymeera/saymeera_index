@@ -1,0 +1,30 @@
+.market-ticker {
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ticker-item { margin-right: 30px; display: inline-block; }
+.text-up { color: #26a641; }
+.text-down { color: #eb5757; }
+
+.navbar { border-bottom: 1px solid #f1f1f1; padding: 18px 0; }
+
+.nav-link {
+  color: #444 !important;
+  font-size: 15px;
+  margin: 0 12px;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+
+.btn-nav-signup {
+  background: #b11212;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 6px 20px !important;
+}

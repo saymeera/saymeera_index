@@ -1,0 +1,115 @@
+<div class="tips-page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h3>All Tips</h3>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tipsModal" (click)="openModal()" #addNewTips>+ Add New Tip</button>
+  </div>
+
+  <!-- TIPS GRID -->
+  <div class="card">
+    <!-- <h3>Sub Admin Users</h3> -->
+
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th>S.No.</th>
+          <th>Tips</th>
+          <th>Created By</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let tips of alltipsList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{tips.tipsMsg}}</td>
+          <td>{{tips?.createdBy?.fullName}}</td>
+          <td>{{tips?.createdBy?.email}}</td>
+          <td>{{tips?.status}}</td>
+          <td><i class="fa fa-edit edit-icon" title="Edit" (click)="editTips(tips)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<div class="modal fade" id="tipsModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" *ngIf="!isEditMode">Create Tips</h5>
+        <h5 class="modal-title" *ngIf="isEditMode">Update Tips</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" #closeBtn></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="addTipsForm">
+
+          <div class="mb-3">
+            <label class="col-form-label">Tips Script:</label>
+            <input type="text" class="form-control"
+                   formControlName="tipsScript"
+                   placeholder="Enter script name">
+          </div>
+
+          <div class="mb-3">
+            <label class="col-form-label">Buy/Sell</label>
+            <select class="form-control" formControlName="buySell">
+              <option value="">Select</option>
+              <option value="BUY">BUY</option>
+              <option value="SELL">SELL</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="col-form-label">Stop Loss</label>
+            <input type="number" class="form-control"
+                   formControlName="stopLoss"
+                   placeholder="Enter stop loss">
+          </div>
+
+          <div class="mb-3">
+            <label class="col-form-label">Expiry Type</label>
+            <select class="form-control" formControlName="expiryUnit">
+              <option value="intraday">Intraday</option>
+              <option value="longterm">Long Term</option>
+              <option value="btst">BTST</option>
+              <option value="banknifty">Bank Nifty</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="col-form-label">Target</label>
+            <input type="number" class="form-control"
+                   formControlName="target"
+                   placeholder="Enter target">
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary"
+                (click)="saveTips()"
+                [disabled]="addTipsForm.invalid" *ngIf="!isEditMode">
+          Create Tips
+        </button>
+        <button type="button" class="btn btn-primary"
+                (click)="updateTips()"
+                [disabled]="addTipsForm.invalid" *ngIf="isEditMode">
+          Update Tips
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
